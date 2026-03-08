@@ -1,7 +1,49 @@
 URL SHORTENER 
 
-приложение для сокращения URL, посредством создания коротких кодов, длинной 
+приложение для сокращения URL, посредством создания коротких кодов. 
 
+Описание:
+  1. создание коротких ссылок
+  2. управление короткими ссылками
+  3. получение статистики количества перехода по короткому ключу
 
+Примеры запросов:
+1. Создание короткой ссылки 
+POST /shorten 
+{
+  "target_url": "string"
+}
+2. Переход по короткому URL 
+GET /short_id
+перенаправляет на оригинальную ссылку 
+3. Получение статистики по переходам 
+GET /stats/short_id
+{
+  "target_url": "string",
+  "is_active": true,
+  "clicks": 0,
+  "url": "string"
+}
 
-запустить приложение py -m uvicorn shortener_app.main:app --reload
+Инструкция по установке и запуску приложения. 
+
+1. склонируйте репозиторий
+  git clone git@github.com:minusaldrett/url-shortener.git
+
+2. перейдите в корневую папку проекта
+  cd c/../url-shortener
+
+3. создайте виртуальное пространство, а затем активируйте 
+  python -m venv venv
+
+  source venv/scripts/activate
+
+4. находясь в корневой папке установите зависимости 
+
+  pip install -r requirements.txt
+
+5. запустите проект командой 
+
+  py -m uvicorn shortener_app.main:app --reload
+
+6. В Swagger (FastAPI) можно перейти по адресу: http://127.0.0.1:8000/docs
