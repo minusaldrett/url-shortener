@@ -1,0 +1,5 @@
+
+
+
+
+запустить приложение py -m uvicorn shortener_app.main:app --reload
